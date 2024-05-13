@@ -261,16 +261,16 @@ countryList.forEach((country) => {
   const term = country.toUpperCase();
   const terms: { score: 0; member: string }[] = [];
 
-  for (let i = 0; i <= terms.length; i++) {
+  for (let i = 0; i <= term.length; i++) {
     terms.push({ score: 0, member: term.substring(0, i) });
   }
-
   terms.push({ score: 0, member: term + "*" });
-  const populateDB = async () => {
+
+  const populateDb = async () => {
     // @ts-expect-error
-    await redis.zadd("terms", ...terms);
-    console.log("Success");
+    await redis.zadd("2terms", ...terms);
+    console.log("Success seeding!");
   };
 
-  populateDB();
+  populateDb();
 });
